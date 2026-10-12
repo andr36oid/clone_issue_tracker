@@ -56,7 +56,8 @@ body:
     label: What shape is the screen?
     description: Look at the console from the front.
     options:
-    - Wider than tall (most R36S-style consoles, 640×480)
+    - 'A bit wider than tall, 4:3 (most R36S-style consoles: 640×480, or 1024×768 like the R46H)'
+    - Much wider than tall, 16:9 like a phone turned sideways (for example the R50S, 854×480)
     - Square (720×720)
     - Taller than wide
     - Don't know
