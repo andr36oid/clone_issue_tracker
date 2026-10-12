@@ -12,7 +12,7 @@ Reports without those files are closed.
 [Open a report](https://github.com/andr36oid/clone_issue_tracker/issues/new/choose)
 
 A genuine R36S, R36S Plus, R46H or R50S that has a problem with the normal files
-belongs in [andr36oid/releases](https://github.com/andr36oid/releases/issues) instead.
+belongs in the [andr36oid issue tracker](https://github.com/andr36oid/issue_tracker/issues/new/choose) instead.
 
 ## Which folder to try
 
