@@ -141,7 +141,7 @@ body:
   id: board
   attributes:
     label: Text printed on the board
-    description: If your console has a see-through case, you can often read it without opening anything. Copy what is printed on the board, often near the edge. Don't open the console just for this.
+    description: If your console has a see-through case, you can often read it without opening anything. Copy what is printed on the board, often under the battery. Don't open the console just for this.
     placeholder: 'For example: R36S-V21 2551, Y3506_V04, G80CA-MB V1.2'
   validations:
     required: false
