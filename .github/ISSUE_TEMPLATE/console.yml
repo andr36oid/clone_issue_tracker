@@ -47,7 +47,7 @@ body:
       1. The **front**, switched on, with something on the screen if possible.
       2. The **back**, including any sticker or label.
       3. The **box**, if you still have it.
-      4. Only if you have opened the console: the **board**, with the text printed on it readable.
+      4. The **board**, with the text printed on it readable, if you can see it: through a see-through case, or because you opened the console.
   validations:
     required: true
 - type: dropdown
@@ -141,7 +141,7 @@ body:
   id: board
   attributes:
     label: Text printed on the board
-    description: Only if you opened the console. Copy what is printed on the board, often near the edge.
+    description: If your console has a see-through case, you can often read it without opening anything. Copy what is printed on the board, often near the edge. Don't open the console just for this.
     placeholder: 'For example: R36S-V21 2551, Y3506_V04, G80CA-MB V1.2'
   validations:
     required: false
