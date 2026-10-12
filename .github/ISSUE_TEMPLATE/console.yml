@@ -1,0 +1,391 @@
+name: My console needs an experimental device tree
+description: For R36S clones and other consoles where the normal andr36oid files don't work and you tried the Experimental folders.
+title: '[Console name]: what doesn''t work'
+labels:
+- clone
+- needs triage
+body:
+- type: markdown
+  attributes:
+    value: |-
+      ## Before you start
+
+      Support for experimental device trees is **very limited**. Nobody on the andr36oid team owns these consoles, so we can only help if you give us everything below. **Reports without the working boot files of your console will be closed.**
+
+      Have these ready:
+      1. **The SD card your console came with** (the one it worked with before), or a copy of its files.
+      2. **Your andr36oid SD card.**
+      3. **A phone** to take photos.
+      4. **A computer** that can read SD cards.
+
+      Answer every question. If you don't know something, choose or write "Don't know": that helps too. You can write in English, Spanish or Portuguese.
+- type: markdown
+  attributes:
+    value: '## Part 1: Your console'
+- type: input
+  id: console
+  attributes:
+    label: What is your console called?
+    description: Exactly as written on the box, on the back of the console or on the shop page.
+    placeholder: 'For example: R36S, R36 Max, K36, G80CA, R36S Plus'
+  validations:
+    required: true
+- type: input
+  id: shop
+  attributes:
+    label: Where did you buy it?
+    description: A link to the shop page (AliExpress, Amazon, Temu, …), or the shop's name. The shop page often tells us which board is inside.
+    placeholder: https://…
+  validations:
+    required: true
+- type: textarea
+  id: photos
+  attributes:
+    label: Photos of the console
+    description: |-
+      Drag photos into this box (or click here and paste them):
+      1. The **front**, switched on, with something on the screen if possible.
+      2. The **back**, including any sticker or label.
+      3. The **box**, if you still have it.
+      4. Only if you have opened the console: the **board**, with the text printed on it readable.
+  validations:
+    required: true
+- type: dropdown
+  id: screen
+  attributes:
+    label: What shape is the screen?
+    description: Look at the console from the front.
+    options:
+    - Wider than tall (most R36S-style consoles, 640×480)
+    - Square (720×720)
+    - Taller than wide
+    - Don't know
+  validations:
+    required: true
+- type: input
+  id: screen_size
+  attributes:
+    label: How big is the screen?
+    description: From one corner to the opposite corner, in inches or cm. Write "Don't know" if you can't measure it.
+    placeholder: 'For example: 3.5 inch'
+  validations:
+    required: true
+- type: dropdown
+  id: came_with
+  attributes:
+    label: Which system did the console come with?
+    description: The name usually shows when the console starts, or it is the name of a drive when you put its original SD card into a computer.
+    options:
+    - ArkOS
+    - dArkOS
+    - EmuELEC
+    - ROCKNIX
+    - AmberELEC
+    - JELOS
+    - Something else (write it in the next box)
+    - Don't know
+  validations:
+    required: true
+- type: input
+  id: came_with_other
+  attributes:
+    label: System name or version, if you know it
+    description: Write the exact name or version, or "Don't know".
+    placeholder: 'For example: EmuELEC 4.7, ArkOS 2.0 (12242025)'
+  validations:
+    required: false
+- type: dropdown
+  id: original_works
+  attributes:
+    label: Does the console still work with the SD card it came with?
+    options:
+    - Yes, everything works
+    - Yes, but something doesn't work (write what below)
+    - 'No'
+    - I don't have that card any more
+  validations:
+    required: true
+- type: dropdown
+  id: slots
+  attributes:
+    label: How many SD card slots does the console have?
+    options:
+    - One
+    - Two
+    - Don't know
+  validations:
+    required: true
+- type: dropdown
+  id: wifi
+  attributes:
+    label: Does the console have Wi-Fi built in?
+    description: Without a USB Wi-Fi stick plugged in.
+    options:
+    - 'Yes'
+    - 'No'
+    - Don't know
+  validations:
+    required: true
+- type: dropdown
+  id: sticks
+  attributes:
+    label: How many analog sticks does it have?
+    options:
+    - None
+    - One
+    - Two
+  validations:
+    required: true
+- type: input
+  id: board
+  attributes:
+    label: Text printed on the board
+    description: Only if you opened the console. Copy what is printed on the board, often near the edge.
+    placeholder: 'For example: R36S-V21 2551, Y3506_V04, G80CA-MB V1.2'
+  validations:
+    required: false
+- type: markdown
+  attributes:
+    value: |-
+      ## Part 2: The working boot files (required)
+
+      These files tell us how your console's screen, buttons and power are wired. Without them we can't help.
+
+      1. Put the **SD card your console came with** into a computer.
+      2. Open the **first drive** that appears. It is often called `BOOT`, `boot`, `EMUELEC` or similar. Windows may say other drives need formatting: **don't format anything**, just close those messages.
+      3. Select **everything at the top of that drive**, including folders like `dtb` or `dtbs`. Leave out files bigger than 50 MB.
+      4. Put them into a zip file: on Windows right-click → **Send to** → **Compressed (zipped) folder**; on a Mac right-click → **Compress**.
+      5. Drag the zip into the box below.
+
+      Don't have the original card any more? Ask in your console's community (Reddit, Discord) for the boot files of the system it came with, and say where you got them.
+- type: textarea
+  id: boot_files
+  attributes:
+    label: Working boot files of your console (.zip)
+    description: Drag the zip from the steps above into this box. Wait until the upload finishes and a link appears.
+  validations:
+    required: true
+- type: markdown
+  attributes:
+    value: '## Part 3: What you did with andr36oid'
+- type: input
+  id: version
+  attributes:
+    label: Which andr36oid version did you write?
+    description: The name of the file you wrote to the card.
+    placeholder: 'For example: lineage-18.1-20261011-1531-r36s-android.img.zip'
+  validations:
+    required: true
+- type: dropdown
+  id: how
+  attributes:
+    label: How did you put andr36oid on the SD card?
+    options:
+    - andr36oid SD Flasher on Windows
+    - andr36oid SD Flasher on macOS
+    - andr36oid SD Flasher on Linux
+    - andr36oid SD Flasher on Android
+    - Another program (balenaEtcher, Rufus, Win32 Disk Imager, dd, …)
+  validations:
+    required: true
+- type: input
+  id: flasher
+  attributes:
+    label: Flasher version
+    description: 'Only if you used the andr36oid SD Flasher: the version in the name of the file you downloaded.'
+    placeholder: 'For example: v0.1.6-beta'
+  validations:
+    required: false
+- type: input
+  id: sdcard
+  attributes:
+    label: Which SD card did you use for andr36oid?
+    description: Brand and size, as printed on the card.
+    placeholder: 'For example: SanDisk Ultra 64 GB'
+  validations:
+    required: true
+- type: checkboxes
+  id: tried
+  attributes:
+    label: Which device tree folders did you try?
+    description: Tick every folder you tried, in the flasher or by copying it by hand. The names are the folders on the BOOT drive of your andr36oid card.
+    options:
+    - label: Panels/Panel0 (R36S, panel 0)
+    - label: Panels/Panel1 (R36S, panel 1)
+    - label: Panels/Panel2 (R36S, panel 2)
+    - label: Panels/Panel3 (R36S, panel 3)
+    - label: Panels/Panel4 (R36S, panel 4 (the default))
+    - label: Panels/Panel5 (R36S, panel 5)
+    - label: Panels/Panel6 (R36S, panel 6)
+    - label: Panels/R36S-Plus (R36S Plus, 720×720)
+    - label: Devices/R46H (R46H)
+    - label: Devices/R50S (R50S)
+    - label: Experimental/R36S-V22 (R36S V22 board)
+    - label: Experimental/R36S-V21 (R36S V21 board)
+    - label: Experimental/R36S-V21-2551-2552 (R36S V21, batches 2551/2552)
+    - label: Experimental/R36S-Y02-Y07 (R36S Y02 to Y07 boards)
+    - label: Experimental/R36S-V30 (R36S V30 board)
+    - label: Experimental/R36S-V30-2603 (R36S V30, batch 2603)
+    - label: Experimental/R36S-Panel3-Alt (R36S panel 3, other timings)
+    - label: Experimental/EE-G80-Panel8 (G80C / G80CA / G80D, panel 8)
+    - label: Experimental/EE-G80-Panel9 (G80CA, panel 9)
+    - label: Experimental/EE-K36-Panel1 (K36 / HG36 / L35 / R36 Pro / ANS11, panel 1)
+    - label: Experimental/EE-K36-Panel4 (K36 / RX6S / RX6H, panel 4)
+    - label: Experimental/EE-V12-Var2 (R36S V12 clone, variant 2)
+    - label: Experimental/EE-V12-Var3-Panel3 (R36S V12 clone, variant 3, panel 3)
+    - label: Experimental/EE-V12-Var3-PanelA (R36S V12 clone, variant 3, other panel)
+    - label: Experimental/K36S (K36S)
+    - label: Experimental/R36T (R36T)
+    - label: Experimental/XF35H (XF35H)
+    - label: Experimental/R36-Ultra (R36 Ultra / GR36, 720×720)
+    - label: Experimental/R36-Max (R36 Max, 720×720)
+    - label: Experimental/S600 (S600, 720×720)
+    - label: Experimental/R39-Max (R39 Max / H50 Pro / T16 Max V2 / ANS13, 720×720)
+    - label: Experimental/T16-Max (T16 Max, first version, 720×720)
+    - label: Experimental/XF40H (XF40H, 720×720)
+    - label: Experimental/Soy-Panel5 (Soy Sauce, panel 5)
+    - label: Experimental/Soy-Panel5-253x (Soy Sauce, panel 5, batches 253x)
+    - label: Experimental/Soy-Panel6 (Soy Sauce, panel 6)
+    - label: Experimental/Soy-Panel7 (Soy Sauce, panel 7)
+    - label: Experimental/Soy-Panel7-253x (Soy Sauce, panel 7, batches 253x)
+    - label: Experimental/Soy-V04-Panel2 (Soy Sauce Y3506 V04, panel 2)
+    - label: Experimental/Soy-V05-2601 (Soy Sauce Y3506 V05, batch 2601)
+- type: dropdown
+  id: best
+  attributes:
+    label: Which one came closest to working?
+    options:
+    - Panels/Panel0 (R36S, panel 0)
+    - Panels/Panel1 (R36S, panel 1)
+    - Panels/Panel2 (R36S, panel 2)
+    - Panels/Panel3 (R36S, panel 3)
+    - Panels/Panel4 (R36S, panel 4 (the default))
+    - Panels/Panel5 (R36S, panel 5)
+    - Panels/Panel6 (R36S, panel 6)
+    - Panels/R36S-Plus (R36S Plus, 720×720)
+    - Devices/R46H (R46H)
+    - Devices/R50S (R50S)
+    - Experimental/R36S-V22 (R36S V22 board)
+    - Experimental/R36S-V21 (R36S V21 board)
+    - Experimental/R36S-V21-2551-2552 (R36S V21, batches 2551/2552)
+    - Experimental/R36S-Y02-Y07 (R36S Y02 to Y07 boards)
+    - Experimental/R36S-V30 (R36S V30 board)
+    - Experimental/R36S-V30-2603 (R36S V30, batch 2603)
+    - Experimental/R36S-Panel3-Alt (R36S panel 3, other timings)
+    - Experimental/EE-G80-Panel8 (G80C / G80CA / G80D, panel 8)
+    - Experimental/EE-G80-Panel9 (G80CA, panel 9)
+    - Experimental/EE-K36-Panel1 (K36 / HG36 / L35 / R36 Pro / ANS11, panel 1)
+    - Experimental/EE-K36-Panel4 (K36 / RX6S / RX6H, panel 4)
+    - Experimental/EE-V12-Var2 (R36S V12 clone, variant 2)
+    - Experimental/EE-V12-Var3-Panel3 (R36S V12 clone, variant 3, panel 3)
+    - Experimental/EE-V12-Var3-PanelA (R36S V12 clone, variant 3, other panel)
+    - Experimental/K36S (K36S)
+    - Experimental/R36T (R36T)
+    - Experimental/XF35H (XF35H)
+    - Experimental/R36-Ultra (R36 Ultra / GR36, 720×720)
+    - Experimental/R36-Max (R36 Max, 720×720)
+    - Experimental/S600 (S600, 720×720)
+    - Experimental/R39-Max (R39 Max / H50 Pro / T16 Max V2 / ANS13, 720×720)
+    - Experimental/T16-Max (T16 Max, first version, 720×720)
+    - Experimental/XF40H (XF40H, 720×720)
+    - Experimental/Soy-Panel5 (Soy Sauce, panel 5)
+    - Experimental/Soy-Panel5-253x (Soy Sauce, panel 5, batches 253x)
+    - Experimental/Soy-Panel6 (Soy Sauce, panel 6)
+    - Experimental/Soy-Panel7 (Soy Sauce, panel 7)
+    - Experimental/Soy-Panel7-253x (Soy Sauce, panel 7, batches 253x)
+    - Experimental/Soy-V04-Panel2 (Soy Sauce Y3506 V04, panel 2)
+    - Experimental/Soy-V05-2601 (Soy Sauce Y3506 V05, batch 2601)
+    - None of them showed anything on the screen
+    - I didn't try any of them
+  validations:
+    required: true
+- type: checkboxes
+  id: symptoms
+  attributes:
+    label: What happens with the folder that came closest?
+    description: Tick everything that is true.
+    options:
+    - label: 'Nothing at all: no light comes on and the screen stays black'
+    - label: A light comes on, but the screen stays black
+    - label: The andr36oid logo shows, then the screen goes black
+    - label: 'The logo shows and stays forever: Android never starts'
+    - label: The picture is upside down, sideways or cut off
+    - label: The picture has wrong colours, stripes or flickers
+    - label: Android starts, but none of the buttons work
+    - label: Some buttons do the wrong thing or nothing
+    - label: The analog sticks move on their own or don't work
+    - label: No sound from the speaker
+    - label: No sound from headphones
+    - label: Wi-Fi doesn't work
+    - label: The battery level is wrong or it doesn't charge
+    - label: It switches off by itself
+    - label: Everything works
+- type: textarea
+  id: what
+  attributes:
+    label: Describe what you see, step by step
+    description: From switching on until it stops changing. Which buttons did you press? What happened?
+    placeholder: |-
+      1. I switch it on: the red light comes on.
+      2. After 5 seconds the andr36oid logo shows.
+      3. …
+  validations:
+    required: true
+- type: textarea
+  id: video
+  attributes:
+    label: A short video of the console starting (optional)
+    description: Film from switching on until nothing changes any more. Drag a short video here (up to 10 MB), or upload it to YouTube or Google Drive and paste the link.
+  validations:
+    required: false
+- type: markdown
+  attributes:
+    value: |-
+      ## Part 4: Console report
+
+      andr36oid can save a report about your console on the SD card, even when the screen stays black. Do this with the folder that came **closest to working**:
+
+      1. Put the **andr36oid SD card** into the computer and open the drive called **BOOT**.
+      2. Make a new, empty text file at the top of that drive and name it **`make-report.txt`** (Windows: right-click → **New** → **Text Document**). If Windows hides file endings, just name it `make-report`.
+      3. Eject the card safely, put it into the console and switch it on.
+      4. **Wait 10 minutes**, even if the screen stays black. Then switch the console off (hold the power button for about 10 seconds if it doesn't react).
+      5. Put the card back into the computer and open **BOOT** again. You should find:
+         - a folder **`andr36oid-reports`** with a file `report-….zip` in it,
+         - **`make-report-result.txt`** (it says where the report went, if not on BOOT),
+         - **`dtb-hint.txt`** (andr36oid's guess which folder fits your board),
+         - maybe **`andr36oid-start-log.txt`**.
+      6. Zip the `andr36oid-reports` folder together with those `.txt` files and drag the zip into the box below.
+
+      If none of these files appear, write that below: that tells us something too.
+- type: textarea
+  id: report
+  attributes:
+    label: Console report (.zip)
+    description: Drag the zip from the steps above here, or write which files did not appear.
+  validations:
+    required: true
+- type: textarea
+  id: hint
+  attributes:
+    label: What does dtb-hint.txt say? (optional)
+    description: Open dtb-hint.txt from the BOOT drive with Notepad and copy all its text here.
+  validations:
+    required: false
+- type: textarea
+  id: other
+  attributes:
+    label: Anything else?
+    description: Other systems you tried on this console, things you changed, anything that seems odd.
+  validations:
+    required: false
+- type: checkboxes
+  id: confirm
+  attributes:
+    label: Please confirm
+    options:
+    - label: I attached the boot files of a system that works on this console.
+      required: true
+    - label: I read Experimental/README.txt on the BOOT drive of my andr36oid card.
+      required: true
+    - label: I understand that support for experimental device trees is very limited.
+      required: true

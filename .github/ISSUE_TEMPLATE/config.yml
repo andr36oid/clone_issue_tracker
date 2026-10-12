@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Problems on a genuine R36S, R36S Plus, R46H or R50S with the normal files
+    url: https://github.com/andr36oid/releases/issues
+    about: This tracker is only for consoles that need an experimental device tree.
