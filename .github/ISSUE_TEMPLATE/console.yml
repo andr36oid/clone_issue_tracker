@@ -131,7 +131,7 @@ body:
   attributes:
     label: How many analog sticks does it have?
     options:
-    - None
+    - No sticks
     - One
     - Two
   validations:
