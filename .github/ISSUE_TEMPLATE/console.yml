@@ -328,6 +328,8 @@ body:
     - label: Wi-Fi doesn't work
     - label: The battery level is wrong or it doesn't charge
     - label: It switches off by itself
+    - label: It hangs or restarts when going to sleep or waking up
+    - label: It stopped starting after I changed a Kernel Tweaks option
     - label: Everything works
 - type: textarea
   id: what
@@ -350,6 +352,51 @@ body:
 - type: markdown
   attributes:
     value: |-
+      ### Kernel Tweaks
+
+      Once Android starts, **Settings > System > Kernel Tweaks** has switches for things clones often wire differently: headphone detection, stick axes, sleep, the number of cores and more. Each one has an **Explain** button. Options under **At start (needs a restart)** are saved in **`kernel-tweaks.txt`** on the BOOT drive. If the console no longer starts after changing one, delete that file on a computer.
+
+      Tweaks that make your console work better help us most: we can make them the default for your console.
+- type: dropdown
+  id: tweaks
+  attributes:
+    label: Did you try Kernel Tweaks?
+    options:
+    - Yes, and some tweaks made things better
+    - Yes, but nothing changed
+    - Yes, and something got worse
+    - No, Android doesn't start far enough
+    - No, I didn't try
+    - My version has no Kernel Tweaks
+  validations:
+    required: true
+- type: checkboxes
+  id: tweaks_helped
+  attributes:
+    label: Which tweaks made things better?
+    description: Tick the ones that helped and write the values you chose below.
+    options:
+    - label: Headphone detection (Controls and sound)
+    - label: Flip stick axes (Controls and sound)
+    - label: Button check rate (Controls and sound)
+    - label: Sleep type, or other Sleep settings
+    - label: Cores in use or Heat limit (Processor and heat)
+    - label: Core power-down when idle (At start)
+    - label: USB power saving (At start)
+    - label: Something else (write it below)
+- type: textarea
+  id: tweaks_values
+  attributes:
+    label: Tweaks and values that work for you (optional)
+    description: The problem report lists every changed tweak too, but a short list here helps. If the console doesn't start, open `kernel-tweaks.txt` on the BOOT drive with Notepad and copy its `kt_args=` line.
+    placeholder: |-
+      Headphone detection → Flipped
+      Sleep type → Light sleep (deep sleep froze it)
+  validations:
+    required: false
+- type: markdown
+  attributes:
+    value: |-
       ## Part 4: Console report
 
       andr36oid can save a report about your console on the SD card, even when the screen stays black. Do this with the folder that came **closest to working**:
@@ -362,6 +409,7 @@ body:
          - a folder **`andr36oid-reports`** with a file `report-….zip` in it,
          - **`make-report-result.txt`** (it says where the report went, if not on BOOT),
          - **`dtb-hint.txt`** (andr36oid's guess which folder fits your board),
+         - maybe **`kernel-tweaks.txt`** (if you changed start options in Kernel Tweaks),
          - maybe **`andr36oid-start-log.txt`**.
       6. Zip the `andr36oid-reports` folder together with those `.txt` files and drag the zip into the box below.
 
